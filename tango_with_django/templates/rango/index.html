@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+
+<html>
+
+    <head>
+        <title>Rango</title>
+    </head>
+
+    <body>
+        <h1>Rango says... hellow</h1>
+
+
+        {% if categories %}
+            <ul>
+                {% for category in categories %}
+                <li><a href="/rango/category/{{ category.slug }}">{{ category.name }}</a></li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <strong>There are no categories present.</strong>
+        {% endif %}
+
+        <h1> Top 5 Pages</h1>
+
+        {% if viewed_pages %}
+
+            <ul>
+                {% for viewed_page in viewed_pages %}
+                    <li><a href="{{ viewed_page.url }}">{{ viewed_page.title }}</a></li>
+                {% endfor %}
+            </ul>
+        {% else %}
+             <strong>There are no viewed pages to present.</strong>
+        {% endif %}
+
+
+        <a href="/rango/about/">About</a><br />
+        <img src="{% static "images/deadpool.jpg" %}" alt="Picture of Deadpool" />
+    </body>
+
+</html>
